@@ -1,0 +1,32 @@
+﻿@model WebApplication9.Models.Ingrediant
+@using WebApplication9.Helper
+
+<div class="ingrediant">
+    <label> Ingrediants </label>
+
+    @Html.HiddenFor(model => model.IngId)
+    @Html.HiddenFor(model => model.RecipeId)
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <h6>Ingrediant Name</h6>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <h6>Quantity</h6>
+            @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <h6>Measurement</h6>
+            @Html.TextBoxFor(x => x.Measurement, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+    @Html.HiddenFor(x => x.DeleteIng, new { @class = "mark-for-delete" })
+    @Html.RemoveLink("Remove", "div.ingrediant", "input.mark-for-delete")
+</div>
+

@@ -1,0 +1,57 @@
+﻿@model WebApplication9.Models.Recipe
+@using WebApplication9.Helper
+
+
+@Html.HiddenFor(x => x.RecipeId)
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="fname">Cusine</label>
+            @Html.TextBoxFor(x => x.Cuisine, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="lname">Recipe Name</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="fname">Preparation Time</label>
+            @Html.TextBoxFor(x => x.PreparationTime, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="lname">Cooking Time</label>
+            @Html.TextBoxFor(x => x.CookingTime, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+        <div class="form-group">
+            <label for="lname">Serves</label>
+            @Html.TextBoxFor(x => x.Serves, new { @class = "form-control" })
+        </div>
+     
+<div id="ingrediants">
+         @Html.EditorFor(x => x.Ingrediants)
+  </div>
+
+
+@*<p>
+    @Html.AddLink("Add More Ingrediants", "#ingrediants", ".ingrediant", "Ingrediants",
+       typeof(WebApplication9.Models.Ingrediant))
+</p>*@
+<div class="form-group mb-4">
+    <label for="message">Method</label>
+    @Html.TextAreaFor(x => x.Method, new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    <label for="lname">Image</label>
+    @Html.TextBoxFor(x => x.ImagePath, new { @class = "form-control" })
+</div>

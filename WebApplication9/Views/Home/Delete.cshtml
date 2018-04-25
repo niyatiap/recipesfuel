@@ -1,0 +1,82 @@
+﻿@model WebApplication9.Models.Recipe
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Recipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreparationTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreparationTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CookingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookingTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serves)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serves)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingrediants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingrediants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Method)
+        </dd>
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)" height="100">
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

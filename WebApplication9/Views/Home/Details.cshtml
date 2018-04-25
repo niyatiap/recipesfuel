@@ -1,0 +1,87 @@
+﻿@model WebApplication9.Models.Recipe
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <p class="mb-5"><img src="@Url.Content(Model.ImagePath)" class="img-fluid"></p>
+            <div class="row">
+                <div class="col-xl-8 col-lg-12 mx-auto">
+                    <h1 class="mb-3">@Html.DisplayFor(model => model.Name)</h1>
+
+                    <p>@Html.DisplayFor(model => model.Cuisine)</p>
+                    @*<p>@Html.DisplayFor(model => model.PreparationTime)</p>
+                    <p>@Html.DisplayFor(model => model.CookingTime)</p>
+                    <p>@Html.DisplayFor(model => model.Serves)</p>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+ </div>
+   <!-- END row -->
+
+<section class="probootstrap-section">
+    <div class="container-fluid">
+        <div class="row mb-5">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="media d-block mb-4 text-left probootstrap-media p-md-5 p-4">
+                    <img src="@Url.Content("~/Content/images/001-cooking-time.png")" class="probootstrap-icon mb-3">
+                    <div class="media-body">
+                        <h6 class="mt-0">Preparation Time : @Html.DisplayFor(model => model.PreparationTime)</h6>
+                        <h6 class="mt-0">Cooking Time : @Html.DisplayFor(model => model.CookingTime)</h6>
+                        <h6 class="mt-0">Serves : @Html.DisplayFor(model => model.Serves)</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="media d-block mb-4 text-left probootstrap-media p-md-5 p-4">
+                    <img src="@Url.Content("~/Content/images/002-harvest.png")" class="probootstrap-icon mb-3">
+                    <div class="media-body">
+                        <h5 class="mt-0">@Html.DisplayNameFor(model => model.Ingrediants)</h5>
+                        <p><table class="table">  
+                
+                             @foreach (var item in Model.Ingrediants)
+                             {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Measurement)
+                                </td>
+                            </tr>
+                             }
+
+                          </table>
+     
+           </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="media d-block mb-4 text-left probootstrap-media p-md-5 p-4">
+                    <img src="@Url.Content("~/Content/images/003-recipe-2.png")" class="probootstrap-icon mb-3">
+                    <div class="media-body">
+                        <h5 class="mt-0">@Html.DisplayNameFor(model => model.Method)</h5>
+                        <p>@Html.DisplayFor(model => model.Method)</p>
+                    </div>
+                </div>
+            </div>
+           
+ 
+        </div>
+        <div>
+            @Html.ActionLink("Update", "Edit", new { id = Model.RecipeId })
+        </div>
+    </div>
+</section>
+<!-- END section -->

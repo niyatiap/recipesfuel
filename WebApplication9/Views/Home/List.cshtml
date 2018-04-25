@@ -1,0 +1,65 @@
+﻿@*@model IEnumerable<WebApplication9.Models.Recipe>*@
+@model PagedList.IPagedList<WebApplication9.Models.Recipe>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-12">
+            <div class="row">
+                <div class="col-xl-8 col-lg-12 mx-auto">
+                    <h1 class="mb-3">Search Recipes</h1>
+
+                    @using (Html.BeginForm("List", "Home", FormMethod.Get))
+                    {
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="fname">Search</label>
+                            @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+                            <input type="submit" value="Search" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    }
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*<div>
+    @Html.ActionLink("Cuisine", "List", new { sortOrder = ViewBag.CuisineSortParm, currentFilter = ViewBag.CurrentFilter })
+</div>*@
+   
+   <section class="probootstrap-section">
+            <div class="container-fluid">
+                <div class="row mb-5">
+                    @foreach (var item in Model)
+                    {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="media d-block mb-4 text-left probootstrap-media p-md-5 p-4">
+                            <img src="@Url.Content(item.ImagePath)" height="100" class="probootstrap-icon mb-3">
+                            <div class="media-body">
+                                <p>@Html.DisplayFor(model => item.Name)</p>
+                                <p>@Html.DisplayFor(model => item.Cuisine)</p>
+                                <div>
+                                    @Html.ActionLink("View Recipe", "Details", new { id = item.RecipeId })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    }
+                </div>
+            </div>
+        </section>
+
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("List", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}))
